@@ -1,0 +1,15 @@
+{
+  "name": "wp-starter-theme",
+  "version": "1.0.0",
+  "description": "Starter Theme for WordPress",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elconejito/wp-starter-theme.git"
+  },
+  "author": "",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/elconejito/wp-starter-theme/issues"
+  },
+  "homepage": "https://github.com/elconejito/wp-starter-theme#readme"
+}

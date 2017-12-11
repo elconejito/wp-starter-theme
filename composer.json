@@ -1,0 +1,14 @@
+{
+    "name": "elconejito/wp-starter-theme",
+    "authors": [
+        {
+            "name": "Harvey Ramos",
+            "email": "harvey@harvsworld.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "squizlabs/php_codesniffer": "3.*"
+    },
+    "license": "GPL-3.0"
+}
