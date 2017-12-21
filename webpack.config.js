@@ -1,9 +1,6 @@
-const path = require('path');
-
-module.exports = {
-    entry: './assets/scripts/main.js',
-    output: {
-        path: path.resolve(__dirname, 'dist/scripts'),
-        filename: 'main.js'
-    }
-};
+module.exports = function(env) {
+  if (env === undefined) {
+    env = "dev"
+  }
+  return require(`./webpack/${env}.js`)
+}
