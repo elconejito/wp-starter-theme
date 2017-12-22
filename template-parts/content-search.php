@@ -7,6 +7,7 @@
  * @package WP_Starter_Theme
  */
 
+use WST\Theme\TemplateTags;
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -15,7 +16,7 @@
 
 		<?php if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
-			<?php wp_starter_theme_posted_on(); ?>
+			<?php TemplateTags\posted_on(); ?>
 		</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
@@ -25,6 +26,6 @@
 	</div><!-- .entry-summary -->
 
 	<footer class="entry-footer">
-		<?php wp_starter_theme_entry_footer(); ?>
+		<?php TemplateTags\entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->
