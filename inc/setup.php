@@ -11,6 +11,10 @@ function setup() {
     // Enable features from Soil when plugin is activated
     // https://roots.io/plugins/soil/
     add_theme_support('soil-clean-up');
+    // add_theme_support('soil-nav-walker');
+    add_theme_support('soil-nice-search');
+    // add_theme_support('soil-jquery-cdn');
+    add_theme_support('soil-relative-urls');
 
     // Make theme available for translation
     // Community translations can be found at https://github.com/roots/sage-translations
@@ -26,22 +30,23 @@ function setup() {
         'primary_navigation' => __('Primary Navigation', 'wst')
     ]);
 
+    // Enable HTML5 markup support
+    // http://codex.wordpress.org/Function_Reference/add_theme_support#HTML5
+    add_theme_support('html5', ['caption', 'comment-form', 'comment-list', 'gallery', 'search-form']);
+
+    // Add default posts and comments RSS feed links to head
+    // https://codex.wordpress.org/Automatic_Feed_Links
+    add_theme_support( 'automatic-feed-links' );
+
+    // Use main stylesheet for visual editor
+    // To add custom styles edit /assets/styles/layouts/_tinymce.scss
+    add_editor_style(Assets\asset_path('css/main.css'));
+
     // Enable post thumbnails
     // http://codex.wordpress.org/Post_Thumbnails
     // http://codex.wordpress.org/Function_Reference/set_post_thumbnail_size
     // http://codex.wordpress.org/Function_Reference/add_image_size
     add_theme_support('post-thumbnails');
-
-    // Enable HTML5 markup support
-    // http://codex.wordpress.org/Function_Reference/add_theme_support#HTML5
-    add_theme_support('html5', ['caption', 'comment-form', 'comment-list', 'gallery', 'search-form']);
-
-    // Add default posts and comments RSS feed links to head.
-    add_theme_support( 'automatic-feed-links' );
-
-    // Use main stylesheet for visual editor
-    // To add custom styles edit /assets/styles/layouts/_tinymce.scss
-    add_editor_style(Assets\asset_path('styles/main.css'));
 }
 add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
 
@@ -89,10 +94,10 @@ function display_sidebar() {
  * Theme assets
  */
 function assets() {
-    wp_enqueue_style('wst/css', Assets\asset_path('styles/main.css'), false, null);
+    wp_enqueue_style('wst_styles', Assets\asset_path('css/main.css'), false, null);
 
-    wp_enqueue_script('wst/js-vendors', Assets\asset_path('scripts/vendors.js'), [], null, true);
-    wp_enqueue_script('wst/js', Assets\asset_path('scripts/main.js'), ['wst/js-vendors'], null, true);
+    wp_enqueue_script('wst_js-vendors', Assets\asset_path('js/vendors.js'), [], null, true);
+    wp_enqueue_script('wst_js', Assets\asset_path('js/main.js'), ['wst_js-vendors'], null, true);
 
     if (is_single() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
