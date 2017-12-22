@@ -1,4 +1,9 @@
 <?php
+
+namespace WST\Theme\TemplateFunction;
+
+use WST\Theme\Setup;
+
 /**
  * Functions which enhance the theme by hooking into WordPress
  *
@@ -11,22 +16,32 @@
  * @param array $classes Classes for the body element.
  * @return array
  */
-function wp_starter_theme_body_classes( $classes ) {
-	// Adds a class of hfeed to non-singular pages.
-	if ( ! is_singular() ) {
-		$classes[] = 'hfeed';
-	}
-
-	return $classes;
+function body_class($classes) {
+    // Add page slug if it doesn't exist
+    if (is_single() || is_page() && !is_front_page()) {
+        if (!in_array(basename(get_permalink()), $classes)) {
+            $classes[] = basename(get_permalink());
+        }
+    }
+    // Add class if sidebar is active
+    if (Setup\display_sidebar()) {
+        $classes[] = 'sidebar-primary';
+    }
+    return $classes;
 }
-add_filter( 'body_class', 'wp_starter_theme_body_classes' );
+add_filter('body_class', __NAMESPACE__ . '\\body_class');
 
 /**
- * Add a pingback url auto-discovery header for singularly identifiable articles.
+ * Clean up the_excerpt()
  */
-function wp_starter_theme_pingback_header() {
-	if ( is_singular() && pings_open() ) {
-		echo '<link rel="pingback" href="', esc_url( get_bloginfo( 'pingback_url' ) ), '">';
-	}
+function excerpt_more() {
+    return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', 'wst') . '</a>';
 }
-add_action( 'wp_head', 'wp_starter_theme_pingback_header' );
+add_filter('excerpt_more', __NAMESPACE__ . '\\excerpt_more');
+
+/**
+ * Output SVGs
+ */
+function getSVG($path) {
+    echo file_get_contents( $path );
+}

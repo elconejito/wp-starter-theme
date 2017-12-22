@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
   entry: {
@@ -61,6 +62,11 @@ module.exports = {
       $: 'jquery',
       jQuery: 'jquery',
       Popper: 'popper.js'
+    }),
+    new ManifestPlugin({
+      filter: ({ path }) => {
+        return !path.startsWith('fonts');
+      }
     })
   ]
 };
