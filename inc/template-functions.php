@@ -45,3 +45,12 @@ add_filter('excerpt_more', __NAMESPACE__ . '\\excerpt_more');
 function getSVG($path) {
     echo file_get_contents( $path );
 }
+
+/**
+ * Compare URL against relative URL
+ */
+function url_compare($url, $rel) {
+    $url = trailingslashit($url);
+    $rel = trailingslashit($rel);
+    return strcasecmp($url, $rel) === 0;
+}

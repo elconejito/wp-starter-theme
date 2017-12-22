@@ -14,6 +14,7 @@ $wst_includes = [
     'inc/template-functions.php',   // Template functions
     'inc/template-tags.php',        // Template Markup functions
     'inc/setup.php',                // Theme setup
+    'inc/template-nav-walker.php',  // Nav Walker for Bootstrap 4
 ];
 
 foreach ( $wst_includes as $file ) {
