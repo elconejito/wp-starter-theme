@@ -4,9 +4,9 @@ const CommonConfig = require('./common.js');
 
 module.exports = Merge(CommonConfig, {
   output: {
-    filename: 'js/main.js'
+    filename: 'js/[name].js'
   },
   plugins: [
-    new ExtractTextPlugin('css/main.css')
+    new ExtractTextPlugin('css/[name].css')
   ]
 });

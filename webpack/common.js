@@ -1,15 +1,24 @@
+const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: './assets/index.js',
+  entry: {
+    main: './assets/index.js',
+    vendors: [ 'jquery', 'bootstrap', 'popper.js' ]
+  },
   output: {
     path: path.resolve(__dirname, '../dist')
   },
   devtool: 'inline-source-map',
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      },
       {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
@@ -32,13 +41,26 @@ module.exports = {
         })
       },
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader'
+        test: /.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/',    // where the fonts will go
+              publicPath: '../'        // override the default path
+            }
+          }
+        ]
       }
     ]
   },
   plugins: [
     new CleanWebpackPlugin(['dist'], { root: path.resolve(__dirname, '..'), }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      Popper: 'popper.js'
+    })
   ]
 };
