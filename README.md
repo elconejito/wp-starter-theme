@@ -19,6 +19,20 @@ This is a WordPress starter theme. It is meant to get you started as quickly as 
 * Asset pipeline for SASS, JS, images, and fonts
 * Bootstrap 4 Beta, Font Awesome, jQuery
 
+### What it does
+* Compiles SASS, CSS into seperate CSS file
+* Compiles JS
+* Handles file versioning for cache-busting assets
+* Supports named output files
+* Provides dev & production workflows
+
+### To-Do
+* Process images
+* Process svgs
+* Minify CSS
+* Seperate source map into files
+* Transpile JSX?
+
 ## Installation
 * `yarn install`
 * `yarn dev`, `yarn prod`, `yarn watch`
