@@ -21,17 +21,17 @@ This is a WordPress starter theme. It is meant to get you started as quickly as 
 
 ### What it does
 * Compiles SASS, CSS into seperate CSS file
+* Minify CSS
 * Compiles JS
+* Process images (jpg, gif, png)
+* Process svgs
 * Handles file versioning for cache-busting assets
+* Separate source map into files
 * Supports named output files
 * Provides dev & production workflows
 * Cleans out `/dist` folder on each run
 
 ### To-Do
-* Process images
-* Process svgs
-* Minify CSS
-* Seperate source map into files
 * Transpile JSX?
 * Watch files
 * browsersync

@@ -53,11 +53,31 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'images/',    // where the images will go
+              publicPath: '../',        // override the default path
+            },
+          },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              bypassOnDebug: true,
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
     new CleanWebpackPlugin(
-      ['dist'],
+      [ 'dist' ],
       {
         root: path.resolve(__dirname, '..'),
       },
