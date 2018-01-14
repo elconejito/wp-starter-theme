@@ -25,6 +25,7 @@ This is a WordPress starter theme. It is meant to get you started as quickly as 
 * Handles file versioning for cache-busting assets
 * Supports named output files
 * Provides dev & production workflows
+* Cleans out `/dist` folder on each run
 
 ### To-Do
 * Process images
@@ -32,6 +33,8 @@ This is a WordPress starter theme. It is meant to get you started as quickly as 
 * Minify CSS
 * Seperate source map into files
 * Transpile JSX?
+* Watch files
+* browsersync
 
 ## Installation
 * `yarn install`

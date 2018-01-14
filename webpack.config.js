@@ -1,6 +1,6 @@
 module.exports = function(env) {
   if (env === undefined) {
-    env = "dev"
+    env = 'dev';
   }
-  return require(`./webpack/${env}.js`)
-}
+  return require(`./webpack/${env}.js`);
+};

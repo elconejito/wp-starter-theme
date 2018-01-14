@@ -6,6 +6,7 @@ module.exports = Merge(CommonConfig, {
   output: {
     filename: 'js/[name].js'
   },
+  devtool: 'source-map',
   plugins: [
     new ExtractTextPlugin('css/[name].css')
   ]
