@@ -6,6 +6,10 @@
       "never"
     ],
     "no-param-reassign": 0,
-    "import/no-dynamic-require": 0
+    "import/no-dynamic-require": 0,
+    "array-bracket-spacing": [
+      "error",
+      "always"
+    ]
   }
 }
