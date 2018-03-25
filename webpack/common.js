@@ -3,6 +3,8 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
 
 module.exports = {
   entry: {
@@ -11,6 +13,9 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
+  },
+  externals: {
+    jquery: 'jQuery',
   },
   module: {
     rules: [
@@ -90,6 +95,18 @@ module.exports = {
     new ManifestPlugin({
       filter: ({ path }) => {
         return !path.startsWith('fonts');
+      },
+    }),
+    new CopyWebpackPlugin([
+      {
+        from: './assets/images',
+        to: 'images/',
+      },
+    ]),
+    new ImageminPlugin({
+      test: /\.(gif|png|jpe?g|svg)$/i,
+      pngquant: {
+        quality: '95-100',
       },
     }),
   ],
