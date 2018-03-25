@@ -6,7 +6,6 @@
 **Version:** 1.0  
 **License:** GPLv3 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-3.0.html  
-**Tags:** accessibility-ready, editor-style, featured-images, footer-widgets, theme-options, threaded-comments, translation-ready
 
 A WordPress starter theme using a mix of Underscores, Roots/Sage, and a minimal webpack config.
 
@@ -17,10 +16,10 @@ This is a WordPress starter theme. It is meant to get you started as quickly as 
 ### Features
 * Standard templates for archives, single posts/pages, and 404
 * Asset pipeline for SASS, JS, images, and fonts
-* Bootstrap 4 Beta, Font Awesome, jQuery
+* Bootstrap 4, Open Iconic, jQuery
 
 ### What it does
-* Compiles SASS, CSS into seperate CSS file
+* Compiles SASS, CSS into separate CSS file
 * Minify CSS
 * Compiles JS
 * Process images (jpg, gif, png)
@@ -38,7 +37,11 @@ This is a WordPress starter theme. It is meant to get you started as quickly as 
 
 ## Installation
 * `yarn install`
-* `yarn dev`, `yarn prod`, `yarn watch`
+
+## Commands
+* `yarn dev`
+* `yarn prod`
+* `yarn watch`
 
 
 ## Frequently Asked Questions

@@ -9,7 +9,7 @@
  * @package WP_Starter_Theme
  */
 
-use WST\Theme\TemplateNav;
+use _WST\Theme\TemplateNav;
 
 ?><!doctype html>
 <html <?php language_attributes(); ?>>

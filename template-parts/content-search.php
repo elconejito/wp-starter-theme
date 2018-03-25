@@ -7,7 +7,7 @@
  * @package WP_Starter_Theme
  */
 
-use WST\Theme\TemplateTags;
+use _WST\Theme\TemplateTags;
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

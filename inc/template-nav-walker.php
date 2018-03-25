@@ -1,7 +1,7 @@
 <?php
-namespace WST\Theme\TemplateNav;
+namespace _WST\Theme\TemplateNav;
 
-use WST\Theme\TemplateFunction;
+use _WST\Theme\TemplateFunction;
 
 /**
  * Class WP_Bootstrap_Navwalker

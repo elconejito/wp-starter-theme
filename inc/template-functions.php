@@ -1,8 +1,8 @@
 <?php
 
-namespace WST\Theme\TemplateFunction;
+namespace _WST\Theme\TemplateFunction;
 
-use WST\Theme\Setup;
+use _WST\Theme\Setup;
 
 /**
  * Functions which enhance the theme by hooking into WordPress
@@ -35,7 +35,7 @@ add_filter('body_class', __NAMESPACE__ . '\\body_class');
  * Clean up the_excerpt()
  */
 function excerpt_more() {
-    return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', 'wst') . '</a>';
+    return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', wp-starter-theme) . '</a>';
 }
 add_filter('excerpt_more', __NAMESPACE__ . '\\excerpt_more');
 

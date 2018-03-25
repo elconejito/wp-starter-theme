@@ -1,6 +1,6 @@
 <?php
 
-namespace WST\Theme\Assets;
+namespace _WST\Theme\Assets;
 
 /**
  * Get paths for assets
