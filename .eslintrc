@@ -10,6 +10,13 @@
     "array-bracket-spacing": [
       "error",
       "always"
+    ],
+    "space-unary-ops": [
+      "error",
+      {
+        "words": false,
+        "nonwords": true
+      }
     ]
   }
 }
