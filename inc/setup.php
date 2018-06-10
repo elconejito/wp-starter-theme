@@ -11,18 +11,18 @@ function setup() {
     // Enable features from Soil when plugin is activated
     // https://roots.io/plugins/soil/
     add_theme_support('soil-clean-up');
-    // add_theme_support('soil-disable-asset-versioning');
     add_theme_support('soil-disable-trackbacks');
-    // add_theme_support('soil-google-analytics', 'UA-XXXXX-Y');
-    // add_theme_support('soil-jquery-cdn');
     add_theme_support('soil-js-to-footer');
-    // add_theme_support('soil-nav-walker');
     add_theme_support('soil-nice-search');
     add_theme_support('soil-relative-urls');
+    // add_theme_support('soil-disable-asset-versioning');
+    // add_theme_support('soil-google-analytics', 'UA-XXXXX-Y');
+    // add_theme_support('soil-jquery-cdn');
+    // add_theme_support('soil-nav-walker');
 
     // Make theme available for translation
     // Community translations can be found at https://github.com/roots/sage-translations
-    load_theme_textdomain(wp-starter-theme, get_template_directory() . '/languages');
+    load_theme_textdomain('wp-starter-theme', get_template_directory() . '/languages');
 
     // Enable plugins to manage the document title
     // http://codex.wordpress.org/Function_Reference/add_theme_support#Title_Tag
@@ -31,7 +31,7 @@ function setup() {
     // Register wp_nav_menu() menus
     // http://codex.wordpress.org/Function_Reference/register_nav_menus
     register_nav_menus([
-        'primary_navigation' => __('Primary Navigation', wp-starter-theme)
+        'primary_navigation' => __('Primary Navigation', 'wp-starter-theme')
     ]);
 
     // Enable HTML5 markup support
@@ -59,7 +59,7 @@ add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
  */
 function widgets_init() {
     register_sidebar([
-        'name'          => __('Primary', wp-starter-theme),
+        'name'          => __('Primary', 'wp-starter-theme'),
         'id'            => 'sidebar-primary',
         'before_widget' => '<section class="widget %1$s %2$s">',
         'after_widget'  => '</section>',
@@ -68,7 +68,7 @@ function widgets_init() {
     ]);
 
     register_sidebar([
-        'name'          => __('Footer', wp-starter-theme),
+        'name'          => __('Footer', 'wp-starter-theme'),
         'id'            => 'sidebar-footer',
         'before_widget' => '<section class="widget %1$s %2$s">',
         'after_widget'  => '</section>',
@@ -91,17 +91,17 @@ function display_sidebar() {
         is_front_page(),
     ]);
 
-    return apply_filters('wst/display_sidebar', $display);
+    return apply_filters('_wst/display_sidebar', $display);
 }
 
 /**
  * Theme assets
  */
 function assets() {
-    wp_enqueue_style('wst_styles', Assets\asset_path('css/main.css'), false, null);
+    wp_enqueue_style('_wst_styles', Assets\asset_path('css/main.css'), false, null);
 
-    wp_enqueue_script('wst_js-vendors', Assets\asset_path('js/vendors.js'), [], null, true);
-    wp_enqueue_script('wst_js', Assets\asset_path('js/main.js'), ['wst_js-vendors'], null, true);
+    wp_enqueue_script('_wst_js-vendors', Assets\asset_path('js/vendors.js'), ['jquery'], null, true);
+    wp_enqueue_script('_wst_js', Assets\asset_path('js/main.js'), ['_wst_js-vendors'], null, true);
 
     if (is_single() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');

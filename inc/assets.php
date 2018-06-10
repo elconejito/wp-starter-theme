@@ -56,3 +56,21 @@ function asset_path($filename) {
         return $dist_path . $directory . $file;
     }
 }
+
+function asset_file_path($filename) {
+    $dist_path = get_template_directory() . '/dist/';
+    $directory = dirname($filename) . '/';
+    $file = basename($filename);
+    static $manifest;
+
+    if (empty($manifest)) {
+        $manifest_path = get_template_directory() . '/dist/' . 'manifest.json';
+        $manifest = new JsonManifest($manifest_path);
+    }
+
+    if (array_key_exists($file, $manifest->get())) {
+        return $dist_path . $manifest->get()[$file];
+    } else {
+        return $dist_path . $directory . $file;
+    }
+}

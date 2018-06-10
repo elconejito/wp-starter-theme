@@ -6,10 +6,11 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package WP_Starter_Theme
+ * @package _WST
  */
 
 use _WST\Theme\TemplateNav;
+use _WST\Theme\TemplateTags;
 
 ?><!doctype html>
 <html <?php language_attributes(); ?>>
@@ -26,7 +27,7 @@ use _WST\Theme\TemplateNav;
 	<header id="masthead" class="site-header">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+                <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php TemplateTags\getLogo(); ?><?php bloginfo( 'name' ); ?></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#primary-navigation" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

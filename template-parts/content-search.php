@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package WP_Starter_Theme
+ * @package _WST
  */
 
 use _WST\Theme\TemplateTags;

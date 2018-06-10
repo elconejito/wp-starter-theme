@@ -213,6 +213,7 @@ class WP_Bootstrap_Navwalker extends \Walker_Nav_Menu {
      * and will add a link to the WordPress menu manager if logged in as an admin.
      *
      * @param array $args passed from the wp_nav_menu function.
+     * @return mixed
      */
     public static function fallback( $args ) {
         if ( current_user_can( 'edit_theme_options' ) ) {

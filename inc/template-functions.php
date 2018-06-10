@@ -7,7 +7,7 @@ use _WST\Theme\Setup;
 /**
  * Functions which enhance the theme by hooking into WordPress
  *
- * @package WP_Starter_Theme
+ * @package _WST
  */
 
 /**
@@ -35,7 +35,7 @@ add_filter('body_class', __NAMESPACE__ . '\\body_class');
  * Clean up the_excerpt()
  */
 function excerpt_more() {
-    return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', wp-starter-theme) . '</a>';
+    return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', 'wp-starter-theme') . '</a>';
 }
 add_filter('excerpt_more', __NAMESPACE__ . '\\excerpt_more');
 
