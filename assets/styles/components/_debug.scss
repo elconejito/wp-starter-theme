@@ -1,0 +1,11 @@
+.debugging {
+    background-color: $black;
+    color: $gray-400;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.75em;
+    padding: .5rem;
+    max-height: 100px;
+    p {
+        margin-bottom: 0;
+    }
+}

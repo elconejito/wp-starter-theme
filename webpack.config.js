@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
@@ -31,14 +31,17 @@ module.exports = (env, argv) => {
         },
         {
           test: /\.(sa|sc|c)ss$/,
-          use: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: [
-              { loader: 'css-loader', options: { sourceMap: devMode } },
-              { loader: 'postcss-loader', options: { sourceMap: devMode } },
-              { loader: 'sass-loader', options: { sourceMap: devMode } },
-            ],
-          }),
+          use: [
+            {
+              loader: MiniCssExtractPlugin.loader,
+              options: {
+                hmr: devMode,
+              },
+            },
+            { loader: 'css-loader', options: { sourceMap: devMode } },
+            { loader: 'postcss-loader', options: { sourceMap: devMode } },
+            { loader: 'sass-loader', options: { sourceMap: devMode } },
+          ],
         },
         {
           test: /.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
@@ -78,9 +81,7 @@ module.exports = (env, argv) => {
     },
     devtool: devMode ? 'source-map' : false,
     plugins: [
-      new CleanWebpackPlugin([
-        'dist',
-      ]),
+      new CleanWebpackPlugin(),
       new webpack.ProvidePlugin({
         $: 'jquery',
         jQuery: 'jquery',
@@ -101,7 +102,7 @@ module.exports = (env, argv) => {
           quality: '90-100',
         },
       }),
-      new ExtractTextPlugin({
+      new MiniCssExtractPlugin({
         filename: `css/[name]${! devMode ? '-[hash:8]' : ''}.css`,
         allChunks: true,
       }),

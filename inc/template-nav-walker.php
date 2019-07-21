@@ -78,7 +78,7 @@ class WP_Bootstrap_Navwalker extends \Walker_Nav_Menu {
                 unset( $classes[ $key ] );
             }
             // test for icon classes - Supports Font Awesome and Glyphicons.
-            if ( 'fa' === $class || 'fa-' === substr( $class, 0, 3 ) ) {
+            if ( 'fa' === $class || 'fab' === $class || 'fa-' === substr( $class, 0, 3 ) ) {
                 // Because of the abiguity of just 'fa' at the start both
                 // 'fa' & 'fa-' are tested for with Font Awesome icons.
                 $icon_class_string .= $class . ' ';
@@ -104,7 +104,7 @@ class WP_Bootstrap_Navwalker extends \Walker_Nav_Menu {
         $class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
         $id = apply_filters( 'nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args );
         $id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
-        $output .= $indent . '<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"' . $id . $value . $class_names . '>';
+        $output .= $indent . '<li ' . $id . $value . $class_names . '>';
         $atts = array();
 
         if ( empty( $item->attr_title ) ) {
@@ -165,8 +165,11 @@ class WP_Bootstrap_Navwalker extends \Walker_Nav_Menu {
         if ( ! empty( $icon_class_string ) ) {
             // append an <i> with the icon classes to what is output before links.
             $icon_html = '<i class="' . esc_attr( $icon_class_string ) . '" aria-hidden="true"></i> ';
+            $item_output .= $args->link_before . $icon_html . $args->link_after;
+        } else {
+            $item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
         }
-        $item_output .= $args->link_before . $icon_html . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
+
         $item_output .= '</a>';
         $item_output .= $args->after;
         $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );

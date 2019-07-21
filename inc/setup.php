@@ -22,7 +22,7 @@ function setup() {
 
     // Make theme available for translation
     // Community translations can be found at https://github.com/roots/sage-translations
-    load_theme_textdomain('wp-starter-theme', get_template_directory() . '/languages');
+    load_theme_textdomain('_wst', get_template_directory() . '/languages');
 
     // Enable plugins to manage the document title
     // http://codex.wordpress.org/Function_Reference/add_theme_support#Title_Tag
@@ -31,7 +31,7 @@ function setup() {
     // Register wp_nav_menu() menus
     // http://codex.wordpress.org/Function_Reference/register_nav_menus
     register_nav_menus([
-        'primary_navigation' => __('Primary Navigation', 'wp-starter-theme')
+        'primary_navigation' => __('Primary Navigation', '_wst')
     ]);
 
     // Enable HTML5 markup support
@@ -59,7 +59,7 @@ add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
  */
 function widgets_init() {
     register_sidebar([
-        'name'          => __('Primary', 'wp-starter-theme'),
+        'name'          => __('Primary', '_wst'),
         'id'            => 'sidebar-primary',
         'before_widget' => '<section class="widget %1$s %2$s">',
         'after_widget'  => '</section>',
@@ -68,7 +68,7 @@ function widgets_init() {
     ]);
 
     register_sidebar([
-        'name'          => __('Footer', 'wp-starter-theme'),
+        'name'          => __('Footer', '_wst'),
         'id'            => 'sidebar-footer',
         'before_widget' => '<section class="widget %1$s %2$s">',
         'after_widget'  => '</section>',
