@@ -14,14 +14,14 @@
 <footer id="footer" class="site-footer container">
     <div class="site-info row">
         <div class="col">
-            <a href="<?php echo esc_url( __( 'https://wordpress.org/', 'wp-starter-theme' ) ); ?>"><?php
+            <a href="<?php echo esc_url( __( 'https://wordpress.org/', '_wst' ) ); ?>"><?php
                 /* translators: %s: CMS name, i.e. WordPress. */
-                printf( esc_html__( 'Proudly powered by %s', 'wp-starter-theme' ), 'WordPress' );
+                printf( esc_html__( 'Proudly powered by %s', '_wst' ), 'WordPress' );
             ?></a>
             <span class="sep"> | </span>
             <?php
                 /* translators: 1: Theme name, 2: Theme author. */
-                printf( esc_html__( 'Theme: %1$s by %2$s.', 'wp-starter-theme' ), 'wp-starter-theme', '<a href="https://github.com/elconejito/wp-starter-theme/">elconejito/wp-starter-theme</a>' );
+                printf( esc_html__( 'Theme: %1$s by %2$s.', '_wst' ), '_wst', '<a href="https://github.com/elconejito/wp-starter-theme/">elconejito/wp-starter-theme</a>' );
             ?>
         </div>
     </div><!-- .site-info -->

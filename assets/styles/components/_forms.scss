@@ -13,3 +13,357 @@
   @extend .btn;
   @extend .btn-secondary;
 }
+
+.gform_wrapper {
+  form {
+
+    .gform_fields {
+      @extend .list-unstyled;
+
+      .gfield {
+        margin-bottom: $spacer;
+        > input,
+        > select,
+        > textarea {
+          @extend .form-control;
+          border-radius: 0;
+          &::placeholder {
+            text-transform: uppercase;
+          }
+        }
+
+        > select .gf_placeholder {
+          text-transform: uppercase;
+        }
+        .checkbox {
+          input[type=checkbox],
+          input[type=radio] {
+            margin-right: $spacer / 2;
+          }
+        }
+
+        &.gf_ten,
+        &.gf_twenty,
+        &.gf_thirty,
+        &.gf_forty,
+        &.gf_fifty,
+        &.gf_half,
+        &.gf_sixty,
+        &.gf_seventy,
+        &.gf_eighty,
+        &.gf_ninety,
+        &.small,
+        &.medium,
+        &.large,
+        &.large.medium {
+          width: 100%;
+        }
+        @include media-breakpoint-up(md) {
+          &.small { width: 30%; }
+          &.medium { width: 50%; }
+          &.gf_ten {
+            width: 10%;
+          }
+          &.gf_twenty {
+            width: 20%;
+          }
+          &.gf_twentyfive {
+            width: 25%;
+          }
+          &.gf_thirty {
+            width: 30%;
+          }
+          &.gf_thirtythree {
+            width: 33%;
+          }
+          &.gf_forty {
+            width: 40%;
+          }
+          &.gf_fifty,
+          &.gf_half {
+            width: 50%;
+          }
+          &.gf_sixty {
+            width: 60%;
+          }
+          &.gf_sixtysix {
+            width: 66%;
+          }
+          &.gf_seventy {
+            width: 70%;
+          }
+          &.gf_seventyfive {
+            width: 75%;
+          }
+          &.gf_eighty {
+            width: 80%;
+          }
+          &.gf_ninety {
+            width: 90%;
+          }
+        }
+
+        .gfield_label {
+          font-weight: bold;
+        }
+
+        .ginput_container {
+          > input,
+          > select,
+          > select option,
+          > textarea {
+            @extend .form-control;
+            border-radius: 0;
+            &::placeholder {
+              text-transform: uppercase;
+            }
+          }
+
+          > textarea {
+            height: auto;
+          }
+
+          .gfield_radio {
+            label {
+              color: inherit;
+            }
+          }
+        }
+      }
+    }
+
+    .gform_footer {
+      margin-bottom: 0.5rem;
+      .gform_button {
+        border-radius: 0;
+
+        text-transform: uppercase;
+        font-weight: 700;
+        min-width: 40%;
+        &:focus,
+        &:hover,
+        &:active,
+        &.active {
+        }
+      }
+    }
+
+    .ginput_container input[disabled],
+    .ginput_container select[disabled],
+    .ginput_container textarea[disabled],
+    .ginput_container input[readonly],
+    .ginput_container select[readonly],
+    .ginput_container textarea[readonly],
+    fieldset[disabled] .ginput_container input,
+    fieldset[disabled] .ginput_container select,
+    fieldset[disabled] .ginput_container textarea {
+      cursor: not-allowed;
+      background-color: #eee;
+    }
+
+    .gfield_required {
+      padding-left: 1px;
+      color: #b94a48;
+    }
+
+    .gform_button.disabled,
+    .gform_button[disabled],
+    fieldset[disabled] .gform_button {}
+
+    .gfield_error {
+
+      .gfield_label,
+      .validation_message {
+        color: $errorColor;
+      }
+      .validation_message {
+        margin-top: 5px;
+      }
+      input,
+      select,
+      textarea {
+        border: 3px solid $errorBorderColor;
+        //border-color: $errorBorderColor;
+        background-color: $errorBackgroundColor;
+        color: $errorTextColor;
+        &::placeholder {
+          color: $errorTextColor;
+        }
+        &:focus {
+          -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, 0.6);
+        }
+      }
+    }
+
+    .gform_validation_container,
+    .gform_hidden {
+      display: none;
+    }
+
+    &.on-dark-background {
+      .gform_fields {
+        .form-control {
+          color: $white;
+          border: 2px solid $white;
+          background-color: rgba($white, 0.15);
+          &:focus {
+            color: $white;
+            background-color: rgba($white, 0);
+            border-color: $white;
+            box-shadow: 0 0 0 $input-btn-focus-width $white;
+          }
+          &::placeholder {
+            color: $white;
+          }
+          option {
+            color: $body-color;
+          }
+        }
+        .warningTextareaInfo {
+          color: $white;
+        }
+      }
+    }
+  }
+}
+.inline {
+  margin-left: -$grid-gutter-width / 2;
+  margin-right: -$grid-gutter-width / 2;
+  li {
+    padding-left: $grid-gutter-width / 2;
+    padding-right: $grid-gutter-width / 2;
+    &.gf_ten,
+    &.gf_twenty,
+    &.gf_thirty,
+    &.gf_forty,
+    &.gf_fifty,
+    &.gf_half,
+    &.small,
+    &.medium {
+      float: left;
+      &:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+    }
+  }
+  .gform_footer {
+    float: left;
+    padding-left: $grid-gutter-width / 2;
+    padding-right: $grid-gutter-width / 2;
+    .gform_button {
+      &:focus,
+      &:hover,
+      &:active,
+      &.active {
+      }
+    }
+  }
+  @include media-breakpoint-up(sm) {
+    li {
+      &.gf_sixty,
+      &.gf_seventy,
+      &.gf_eighty,
+      &.gf_ninety,
+      &.large {
+        float: left;
+        &:after {
+          content: "";
+          display: table;
+          clear: both;
+        }
+      }
+    }
+  }
+}
+.one-line {
+  display: flex;
+  //flex-wrap: nowrap;
+  .gform_body {
+    flex: 1 0 auto;
+    .gform_fields {
+      display: flex;
+    }
+  }
+  .gform_footer {}
+}
+.no-labels {
+  .gfield_label {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+  }
+}
+.on-dark-background {
+  .gform_fields {
+    .form-control {
+      color: $white;
+      border: 2px solid $white;
+      background-color: rgba($white, 0.15);
+      &:focus {
+        color: $white;
+        background-color: rgba($white, 0);
+        border-color: $white;
+        box-shadow: 0 0 0 $input-btn-focus-width $white;
+      }
+      &::placeholder {
+        color: $white;
+      }
+      option {
+        color: $body-color;
+      }
+    }
+    .warningTextareaInfo {
+      color: $white;
+    }
+  }
+}
+
+.gform_validation_error {
+  .one-line {
+    flex-wrap: wrap;
+    .validation_error {
+      width: 100%;
+    }
+  }
+}
+.validation_error {
+  padding: $spacer;
+  margin-bottom: $spacer;
+  border: 1px solid transparent;
+  background-color: $errorBackgroundColor;
+  color: $light;
+  h4 {
+    margin-top: 0;
+    color: inherit;
+  }
+  .alert-link {
+    color: darken($errorTextColor, 10%);
+    font-weight: bold;
+  }
+  & > p,
+  & > ul {
+    margin-bottom: 0;
+  }
+}
+
+#gforms_confirmation_message {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: $border-radius;
+  h4 {
+    margin-top: 0;
+  }
+  .alert-link {
+    font-weight: bold;
+  }
+  & > p,
+  & > ul {
+    margin-bottom: 0;
+  }
+}
