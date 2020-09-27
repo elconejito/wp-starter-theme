@@ -90,12 +90,14 @@ module.exports = (env, argv) => {
       new ManifestPlugin({
         filter: ({ path }) => path.startsWith('js') || path.startsWith('css'),
       }),
-      new CopyWebpackPlugin([
-        {
-          from: './assets/images',
-          to: 'images/',
-        },
-      ]),
+      new CopyWebpackPlugin({
+        patterns: [
+          {
+            from: './assets/images',
+            to: 'images/',
+          },
+        ],
+      }),
       new ImageminPlugin({
         test: /\.(gif|png|jpe?g|svg)$/i,
         pngquant: {
